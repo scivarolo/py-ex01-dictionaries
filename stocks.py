@@ -26,22 +26,17 @@ def purchase_report(stock_purchases):
 purchase_report(stock_purchases)
 
 def portfolio_report(purchases):
-    """Prints all purchases grouped by stock, and sums them up."""
+    """Loop through purchases, group them together by company and print a report."""
     grouped_purchases = {}
-    ticker_set = set()
-
     for purchase in purchases:
-        ticker_set.add(purchase[0])
-
-    for ticker in ticker_set:
-        grouped_purchases[ticker] = []
-
-    for purchase in purchases:
-        grouped_purchases[purchase[0]].append(purchase)
+        if purchase[0] in grouped_purchases:
+            grouped_purchases[purchase[0]].append(purchase)
+        else:
+            grouped_purchases[purchase[0]] = [purchase]
 
     for key, stock_list in grouped_purchases.items():
         total_cost = 0
-        print()
+        print("\n")
         print("-------------- {0} --------------".format(key))
         for purchase in stock_list:
             total_cost += purchase[1] * purchase[3]
