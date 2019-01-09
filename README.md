@@ -1,5 +1,3 @@
-# py-ex01-dictionaries
-
 # Python Stock Dictionary
 
 ## Instructions
